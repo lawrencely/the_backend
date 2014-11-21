@@ -49,6 +49,7 @@ end
 gem 'bcrypt'
 gem 'mail'
 gem 'daemons'
+gem 'grape'
 
 
 # Use ActiveModel has_secure_password
