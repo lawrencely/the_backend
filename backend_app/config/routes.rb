@@ -9,14 +9,13 @@
 #                  PATCH  /category/:id(.:format)        category#update
 #                  PUT    /category/:id(.:format)        category#update
 #                  DELETE /category/:id(.:format)        category#destroy
-#       user_index GET    /user(.:format)                user#index
-#                  POST   /user(.:format)                user#create
-#         new_user GET    /user/new(.:format)            user#new
-#        edit_user GET    /user/:id/edit(.:format)       user#edit
-#             user GET    /user/:id(.:format)            user#show
-#                  PATCH  /user/:id(.:format)            user#update
-#                  PUT    /user/:id(.:format)            user#update
-#                  DELETE /user/:id(.:format)            user#destroy
+#            users GET    /users(.:format)               users#index
+#                  POST   /users(.:format)               users#create
+#         new_user GET    /users/new(.:format)           users#new
+#             user GET    /users/:id(.:format)           users#show
+#                  PATCH  /users/:id(.:format)           users#update
+#                  PUT    /users/:id(.:format)           users#update
+#                  DELETE /users/:id(.:format)           users#destroy
 #   customer_index GET    /customer(.:format)            customer#index
 #                  POST   /customer(.:format)            customer#create
 #     new_customer GET    /customer/new(.:format)        customer#new
@@ -57,14 +56,36 @@
 #                  PATCH  /store/:id(.:format)           store#update
 #                  PUT    /store/:id(.:format)           store#update
 #                  DELETE /store/:id(.:format)           store#destroy
+#            pages GET    /pages(.:format)               pages#index
+#                  POST   /pages(.:format)               pages#create
+#         new_page GET    /pages/new(.:format)           pages#new
+#        edit_page GET    /pages/:id/edit(.:format)      pages#edit
+#             page GET    /pages/:id(.:format)           pages#show
+#                  PATCH  /pages/:id(.:format)           pages#update
+#                  PUT    /pages/:id(.:format)           pages#update
+#                  DELETE /pages/:id(.:format)           pages#destroy
+#             root GET    /                              pages#home
+#            login GET    /login(.:format)               sessions#new
+#                  POST   /login(.:format)               sessions#create
+#                  DELETE /login(.:format)               sessions#destroy
+#        edit_user GET    /users/edit(.:format)          users#edit
 #
 
 Rails.application.routes.draw do
   resources :category
-  resources :user
+  resources :users, :except => [:edit]
   resources :customer
   resources :product
   resources :order
   resources :order_item
   resources :store
+  resources :pages
+
+  root 'pages#home'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/login' => 'sessions#destroy'
+  get '/users/edit' => 'users#edit', :as => :edit_user
+
 end
