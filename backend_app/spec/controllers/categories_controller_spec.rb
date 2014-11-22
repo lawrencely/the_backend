@@ -7,7 +7,7 @@ RSpec.describe CategoriesController, :type => :controller do
       email: 'test@test.com',
       password: 'test',
       password_confirmation: 'test'
-      )
+    )
     get 'new'
   end
   describe 'GET new ' do
@@ -16,14 +16,41 @@ RSpec.describe CategoriesController, :type => :controller do
     end
 
     it 'should show success 202' do
+      expect(response).to be_success
     end
   end
 
   describe 'CREATE new category' do
+    before do
+      @user = User.create!(
+        name: 'test',
+        email: 'test@test.com',
+        password: 'test',
+        password_confirmation: 'test'
+      )
+      @store = Store.create!(
+        name: 'test_store',
+        description: 'test_store_desciption',
+        user_id: @user.id
+      )
+      created_category = {
+        name: 'test_category',
+        description: 'test_category_desciption',
+        store_id: @store.id
+      }
+      post :create, { id: @store.user_id, category: created_category }, { user_id: @store.user_id }
+    end
+
+    it 'should assign category to current user store id' do
+      expect(Category.last.store_id).to eq(@store.id)
+    end
+
     it 'should create new category' do
+      expect(Category.count).to eq(1)
     end
 
     it 'should assign category to current user' do
+      expect(assigns(@category.store_id)).to eq(assigns(@store.id))
     end
 
     it 'should redirect to root path' do

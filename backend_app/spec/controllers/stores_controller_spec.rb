@@ -23,7 +23,7 @@ RSpec.describe StoresController, :type => :controller do
         name: 'test_store',
         description: 'test_store_desciption'
       }
-      post :create, {id: @user.id, store:created_store} , { user_id: @user.id }
+      post :create, {id: @user.id, store:created_store}, { user_id: @user.id }
     end
 
     it 'should assign store to current user' do
