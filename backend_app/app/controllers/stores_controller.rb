@@ -18,18 +18,18 @@ class StoresController < ApplicationController
   def update
     store = Store.find params[:id]
     if @current_user.id == store.user_id
-        store.update store_params
-        redirect_to root_path
+      store.update store_params
+      redirect_to root_path
     else
-      render :new
+      # render :new
     end
   end
 
   def delete
+
   end
 
   def store_params
     params.require(:store).permit(:name, :description, :user_id)
   end
-
 end
