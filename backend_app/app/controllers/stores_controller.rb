@@ -31,6 +31,8 @@ class StoresController < ApplicationController
     redirect_to root_path
   end
 
+  private
+
   def store_params
     params.require(:store).permit(:name, :description, :user_id)
   end

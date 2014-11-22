@@ -8,6 +8,11 @@ RSpec.describe CategoriesController, :type => :controller do
       password: 'test',
       password_confirmation: 'test'
     )
+    @store = Store.create!(
+      name: 'test_store',
+      description: 'test_store_desciption',
+      user_id: @user.id
+    )
     get 'new'
   end
   describe 'GET new ' do
@@ -22,22 +27,12 @@ RSpec.describe CategoriesController, :type => :controller do
 
   describe 'CREATE new category' do
     before do
-      @user = User.create!(
-        name: 'test',
-        email: 'test@test.com',
-        password: 'test',
-        password_confirmation: 'test'
-      )
-      @store = Store.create!(
-        name: 'test_store',
-        description: 'test_store_desciption',
-        user_id: @user.id
-      )
       created_category = {
         name: 'test_category',
         description: 'test_category_desciption',
-        store_id: @store.id
+        store_id: @store
       }
+      binding.pry
       post :create, { id: @store.user_id, category: created_category }, { user_id: @store.user_id }
     end
 
