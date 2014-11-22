@@ -85,8 +85,6 @@ RSpec.describe StoresController, :type => :controller do
     end
   end
 
-########################################################## test below doesnt work ##############
-
     describe 'if user not equal to store.user.id' do
       before do
         @store_fail = Store.create!(
@@ -101,15 +99,28 @@ RSpec.describe StoresController, :type => :controller do
         }
         put :update, { id: @store_fail.id, store: updated_store }, { user_id: @user.id }
       end
-
+##################
       it 'should render new template' do
         # expect(response).to render_template('new')
       end
     end
+##################
+  describe 'DELETE a store' do
+    before do
+      @store_delete = Store.create!(
+      name: 'test_store',
+      description: 'test_store_desciption',
+      user_id: @user.id
+      )
+      delete :destroy, { id: @store_delete.id }, { user_id: @user.id }
+    end
 
-  #########################################################################################
+    it 'should empty from database' do
+      expect(Store.count).to eq(0)
+    end
 
-  # describe 'DELETE a store' do
-
-  # end
+    it 'should redirect to root path' do
+      expect(response).to redirect_to(root_path)
+    end
+  end
 end
