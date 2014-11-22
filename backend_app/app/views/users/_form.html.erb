@@ -1,0 +1,14 @@
+<%= form_for(:user) do |f| %>
+  Name: <%= f.text_field :name %>
+  email: <%= f.text_field :email %>
+  Password: <%= f.password_field :password%>
+  Password Confirmation:<%= f.password_field :password_confirmation%>
+  <%= f.submit :Signup %>
+<% end %>
+<% if @user.errors.any? %>
+    <% for message_error in @user.errors.full_messages %>
+      <%= message_error %>
+    <% end %>
+<% end %>
+
+
