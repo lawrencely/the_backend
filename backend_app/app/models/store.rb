@@ -31,7 +31,7 @@ class Store < ActiveRecord::Base
   def self.generate_api_key
     loop do
       token = SecureRandom.base64.tr('0+/=', 'bRat')
-      break token unless Store.exists?(user_token: token)
+      break token unless Store.exists?(api_key: token)
     end
   end
 

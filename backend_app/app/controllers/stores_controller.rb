@@ -5,13 +5,6 @@ class StoresController < ApplicationController
   end
 
   def create
-
-    ############################### does this go here or in the application helper
-    before_create do |doc|
-      doc.api_key = doc.generate_api_key
-    end
-    ###############################
-
     @store = Store.new store_params
     @store.user_id = @current_user.id
     if @store.save
