@@ -2,16 +2,18 @@ require 'rails_helper'
 
 RSpec.describe StoresController, :type => :controller do
   before do
-    @user = User.create!(
+    @current_user = User.create!(
       name: 'test',
       email: 'test@test.com',
-      password: 'test',
-      password_confirmation: 'test'
+      password: 'testtest',
+      password_confirmation: 'testtest'
       )
-    get 'new'
   end
 
   describe 'GET new for store' do
+    before do
+      get :new
+    end
     it 'should render new store page' do
       expect(response).to render_template('new')
     end
@@ -23,11 +25,11 @@ RSpec.describe StoresController, :type => :controller do
         name: 'test_store',
         description: 'test_store_desciption'
       }
-      post :create, {id: @user.id, store:created_store}, { user_id: @user.id }
+      post :create, {id: @current_user.id, store:created_store}, { user_id: @current_user.id }
     end
 
     it 'should assign store to current user' do
-      expect(Store.last.user_id).to eq(@user.id)
+      expect(Store.last.user_id).to eq(@current_user.id)
     end
 
     it 'should create a store' do
@@ -36,6 +38,19 @@ RSpec.describe StoresController, :type => :controller do
 
     it 'should redirect to root path' do
       expect(response).to redirect_to(root_path)
+    end
+  end
+
+  describe 'POST create new store' do
+    before do
+      created_store = {
+        name: '',
+        description: 'test_store_desciption'
+      }
+      post :create, {id: @current_user.id, store:created_store}, { user_id: @current_user.id }
+    end
+    it 'should render back new template for failing validation' do
+      expect(response).to render_template('new')
     end
   end
 
@@ -62,17 +77,19 @@ RSpec.describe StoresController, :type => :controller do
       @store = Store.create!(
         name: 'test_store',
         description: 'test_store_desciption',
-        user_id: @user.id
+        user_id: @current_user.id
       )
       updated_store = {
         name: 'updated_store',
         description: 'updated_description'
       }
-      put :update, { id: @store.id, store: updated_store }, { user_id: @user.id }
+      put :update, { id: @store.id, store: updated_store }, { user_id: @current_user.id }
     end
 
     it 'should assign current user to store user id' do
-      expect(assigns(@user.id)).to eq(assigns(@store.user_id))
+      #expect(assigns(:current_user).id).to eq(assigns(:store).user_id))
+      @store.reload
+      expect(@store.user_id).to eq(@current_user.id)
     end
 
     it 'should update store in database' do
@@ -85,34 +102,33 @@ RSpec.describe StoresController, :type => :controller do
     end
   end
 
-    describe 'if user not equal to store.user.id' do
+    describe 'if user update does not pass validation method' do
       before do
-        @store_fail = Store.create!(
+        @store = Store.create!(
         name: 'test_store',
         description: 'test_store_desciption',
-        user_id: @user.id
+        user_id: @current_user.id
         )
         updated_store = {
-          name: 'updated store',
+          name: '',
           description: 'updated description',
-          user_id: '1' #updating with wrong user
+          user_id: @current_user.id
         }
-        put :update, { id: @store_fail.id, store: updated_store }, { user_id: @user.id }
+        put :update, { id: @store.id, store: updated_store }, { user_id: @current_user.id }
       end
-##################
       it 'should render new template' do
-        # expect(response).to render_template('new')
+        expect(response).to render_template('new')
       end
     end
-##################
+
   describe 'DELETE a store' do
     before do
       @store_delete = Store.create!(
       name: 'test_store',
       description: 'test_store_desciption',
-      user_id: @user.id
+      user_id: @current_user.id
       )
-      delete :destroy, { id: @store_delete.id }, { user_id: @user.id }
+      delete :destroy, { id: @store_delete.id }, { user_id: @current_user.id }
     end
 
     it 'should empty from database' do

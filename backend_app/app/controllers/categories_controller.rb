@@ -13,7 +13,7 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new category_params
-    @store = Store.where :user_id => @current_user.id
+    @store = @current_user.stores.first
     @category.store_id = @store.id
     if @category.save
       redirect_to root_path
@@ -27,10 +27,9 @@ class CategoriesController < ApplicationController
   end
 
   def update
-    category = Category.find params[:id]
-    @store = Store.where :user_id => @current_user.id
-    if @category.store_id == @store.id
-      category.update category_params
+    @category = Category.find params[:id]
+    @store = @current_user.stores.first
+    if @category.store_id == @store.id && @category.update(category_params)
       redirect_to root_path
     else
       render :new
@@ -40,7 +39,7 @@ class CategoriesController < ApplicationController
   def destroy
     category = Category.find params[:id]
     category.destroy
-    redirect_to categories_path
+    redirect_to root_path
   end
 
   # def show

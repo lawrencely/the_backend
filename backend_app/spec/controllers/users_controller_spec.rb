@@ -17,11 +17,10 @@ RSpec.describe UsersController, :type => :controller do
         post :create, user:{
           name: "test",
           email: "test@test.com",
-          password:"test",
-          password_confirmation: "test"
+          password:"testtest",
+          password_confirmation: "testtest"
         }
       end
-
       it 'should create a user in the database' do
         expect(User.count).to eq(1)
       end
@@ -31,6 +30,19 @@ RSpec.describe UsersController, :type => :controller do
       end
     end
 
+    describe 'invalid user' do
+      before do
+        post :create, user:{
+          name: "test",
+          email: "test@test.com",
+          password:"testtest",
+          password_confirmation: ""
+        }
+      end
+      it 'should render new template for invalid user' do
+        expect(response).to render_template('new')
+      end
+    end
     context 'user entered invalid information' do
       before do
         post :create, user:{
@@ -56,8 +68,8 @@ RSpec.describe UsersController, :type => :controller do
         @user = User.create!(
           name: "test",
           email: "test@test.com",
-          password:'test',
-          password_confirmation: 'test'
+          password:'testtest',
+          password_confirmation: 'testtest'
         )
         get :edit, { :id => @user.id }, { user_id: @user.id }
     end
@@ -79,8 +91,8 @@ RSpec.describe UsersController, :type => :controller do
       @user = User.create!(
         name: "test",
         email: "test@test.com",
-        password:"test",
-        password_confirmation: "test"
+        password:"testtest",
+        password_confirmation: "testtest"
       )
 
       updated_user = {

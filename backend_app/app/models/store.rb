@@ -16,4 +16,6 @@ class Store < ActiveRecord::Base
   has_many :customers
   has_many :products
   has_many :categories
+
+  validates :name, :presence => true
 end

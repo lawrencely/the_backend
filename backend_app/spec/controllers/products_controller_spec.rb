@@ -2,25 +2,28 @@ require 'rails_helper'
 
 RSpec.describe ProductsController, :type => :controller do
   before do
-    @user = User.create!(
+    @current_user = User.create!(
       name: 'test',
       email: 'test@test.com',
-      password: 'test',
-      password_confirmation: 'test'
+      password: 'testtest',
+      password_confirmation: 'testtest'
     )
     @store = Store.create!(
       name: 'test_store',
       description: 'test_store_desciption',
-      user_id: @user.id
+      user_id: @current_user.id
     )
     @category = Category.create!(
       name: 'test_category',
       description: 'test_description',
       store_id: @store.id
     )
-    get :new
   end
   describe 'NEW get ' do
+    before do
+      get :new, {}, {user_id: @current_user.id}
+    end
+
     it 'should render new form' do
       expect(response).to render_template('new')
     end
@@ -41,8 +44,7 @@ RSpec.describe ProductsController, :type => :controller do
         store_id: @store.id,
         image: 'test_image'
       }
-      controller.send(:current_user)
-      post :create, { product: created_product }
+      post :create, { id: @current_user.id,  product: created_product }, { user_id: @current_user.id}
     end
 
     it 'should save to database' do
@@ -52,7 +54,16 @@ RSpec.describe ProductsController, :type => :controller do
 
   describe 'EDIT get' do
     before do
-      get :edit
+      @product = {
+        name: 'test_product',
+        description: 'test_description',
+        short_description: 'test_short_description',
+        price: 'test_price',
+        product_attributes: 'test_product_attributes',
+        store_id: @store.id,
+        image: 'test_image'
+      }
+      get :edit, { id: @product.id }, { user_id: @current_user.id }
     end
 
     it 'should render the edit page' do

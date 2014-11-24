@@ -7,8 +7,11 @@ class StoresController < ApplicationController
   def create
     @store = Store.new store_params
     @store.user_id = @current_user.id
-    @store.save
-    redirect_to root_path
+    if @store.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def edit
@@ -16,12 +19,11 @@ class StoresController < ApplicationController
   end
 
   def update
-    store = Store.find params[:id]
-    if @current_user.id == store.user_id
-      store.update store_params
+    @store = Store.find params[:id]
+    if @current_user.id == @store.user_id && @store.update(store_params)
       redirect_to root_path
     else
-      # render :new
+      render :new
     end
   end
 
