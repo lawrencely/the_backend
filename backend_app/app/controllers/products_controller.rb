@@ -18,10 +18,9 @@ class ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find params[:id]
-    @store = Store.where :user_id => @current_user.id
-    if @product.store_id == @store.id
-      product.update product_params
+    @product = Product.find params[:id]
+    @store = @current_user.stores.first
+    if @product.store_id == @store.id && @product.update(product_params)
       redirect_to root_path
     else
       render :new

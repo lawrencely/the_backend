@@ -6,8 +6,8 @@ RSpec.describe SessionsController, :type => :controller do
   @user = User.create(
     name: "test",
     email: "test@test.com",
-    password:'test',
-    password_confirmation: 'test'
+    password:'testtest',
+    password_confirmation: 'testtest'
     )
   end
 
