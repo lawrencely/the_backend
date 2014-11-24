@@ -6,8 +6,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new product_params
     @store = @current_user.stores.first
-    @store_categories = @store.categories
-    @store_categories << @product
     if @product.save
       redirect_to root_path
     else
@@ -39,6 +37,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :short_description, :price, :product_attributes, :image, :store_id)
+    params.require(:product).permit(:name, :description, :short_description, :price, :product_attributes, :image, :store_id, :category_ids)
   end
 end

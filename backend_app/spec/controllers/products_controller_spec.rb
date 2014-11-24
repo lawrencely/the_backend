@@ -42,9 +42,10 @@ RSpec.describe ProductsController, :type => :controller do
         price: 'test_price',
         product_attributes: 'test_product_attributes',
         store_id: @store.id,
-        image: 'test_image'
+        image: 'test_image',
+        category_ids: [@category.id]
       }
-      post :create, { id: @current_user.id,  product: created_product }, { user_id: @current_user.id}
+      post :create, { product: created_product }, { user_id: @current_user.id}
     end
 
     it 'should save to database' do
@@ -54,7 +55,7 @@ RSpec.describe ProductsController, :type => :controller do
 
   describe 'EDIT get' do
     before do
-      @product = {
+      @product = Product.create!(
         name: 'test_product',
         description: 'test_description',
         short_description: 'test_short_description',
@@ -62,7 +63,7 @@ RSpec.describe ProductsController, :type => :controller do
         product_attributes: 'test_product_attributes',
         store_id: @store.id,
         image: 'test_image'
-      }
+      )
       get :edit, { id: @product.id }, { user_id: @current_user.id }
     end
 
