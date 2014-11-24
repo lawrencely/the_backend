@@ -8,6 +8,8 @@
 #  updated_at  :datetime
 #  name        :string(255)
 #  description :string(255)
+#  api_key     :string(255)
+#  api_secret  :string(255)
 #
 
 class Store < ActiveRecord::Base
