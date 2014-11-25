@@ -1,1 +1,13 @@
-Pages Home Page
+<% @current_user.stores.each do |store| %>
+<%= store.name %>
+<%= store.description %>
+<% store.customers.each do |customer| %>
+    <%= customer.name %>
+    <%= customer.orders.count %>
+  <% end %>
+<% store.products.each do |product| %>
+  <%= product.name %>
+  <%= product.description %>
+  <%= product.price %>
+  <% end %>
+<% end %>

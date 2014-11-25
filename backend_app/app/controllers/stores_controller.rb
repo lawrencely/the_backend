@@ -1,5 +1,8 @@
 class StoresController < ApplicationController
 
+  def index
+  end
+
   def new
     @store = Store.new
   end

@@ -12,7 +12,6 @@
 #  postcode        :string(255)
 #  state           :string(255)
 #  country         :string(255)
-#  stored_id       :integer
 #  created_at      :datetime
 #  updated_at      :datetime
 #

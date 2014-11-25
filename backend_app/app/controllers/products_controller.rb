@@ -1,4 +1,12 @@
 class ProductsController < ApplicationController
+#class Api::V1::ProductController < ApplicationController
+
+  before_action :authenticate_api, :only => [:index, :show]
+
+  def index
+    render json: @store.products
+  end
+
   def new
     @product = Product.new
   end
@@ -27,6 +35,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show
+    @product = @store.products.find_by id: params[:id]
+    render json: @product
+  end
+
   def destroy
     product = Product.find params[:id]
     product.destroy
@@ -37,5 +50,12 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :short_description, :price, :product_attributes, :image, :store_id, :category_ids)
+  end
+
+
+  def authenticate_api
+    authenticate_or_request_with_http_token do |token, options|
+      @store = Store.where(api_key: token).first
+    end
   end
 end
