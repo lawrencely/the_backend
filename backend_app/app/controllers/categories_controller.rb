@@ -1,11 +1,4 @@
 class CategoriesController < ApplicationController
-  # def index
-  #   if @current_user.present?
-  #     @category = Category.where :store_id => @current_user.id
-  #   else
-  #     redirect_to root_path
-  #   end
-  # end
 
   def new
     @category = Category.new

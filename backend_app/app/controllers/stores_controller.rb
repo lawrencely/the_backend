@@ -42,10 +42,4 @@ class StoresController < ApplicationController
     params.require(:store).permit(:name, :description, :user_id, :api_key, :api_secret)
   end
 
-  # def authenticate_api
-  #   authenticate_or_request_with_http_token do |token, options|
-  #     @store = Store.where(api_key: token).first
-  #   end
-  # end
-
 end

@@ -4,17 +4,36 @@ class CustomersController < ApplicationController
 
   def index
     @customers = @store.customers
+    render json: @customers
   end
 
   def show
     @customer = @store.customers.find params[:id]
+    render json: @customer
   end
 
   def create
-
+    @customer = Customer.new
+    @customer.name = params[:name]
+    @customer.email = params[:email]
+    @customer.password = params[:password]
+    if @customer.save
+      render json: @customer
+    else
+      render json: { error: @customer.errors }
+    end
   end
 
   def update
+    @customer = @store.customers.find params[:id]
+    @customer.name = params[:name]
+    @customer.email = params[:email]
+    @customer.password = params[:password]
+    if @customer.save
+      render json: @customer
+    else
+      render json: { error: @customer.errors }
+    end
   end
 
   private
