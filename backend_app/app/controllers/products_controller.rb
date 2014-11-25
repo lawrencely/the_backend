@@ -52,7 +52,6 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:name, :description, :short_description, :price, :product_attributes, :image, :store_id, :category_ids)
   end
 
-
   def authenticate_api
     authenticate_or_request_with_http_token do |token, options|
       @store = Store.where(api_key: token).first
