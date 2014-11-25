@@ -10,7 +10,6 @@
 #  description :string(255)
 #  api_key     :string(255)
 #  api_secret  :string(255)
-#  api_rpm     :integer          default(0)
 #
 
 class Store < ActiveRecord::Base
@@ -21,11 +20,9 @@ class Store < ActiveRecord::Base
   has_many :categories
   validates :name, :presence => true
 
-  DEFAULT_API_RPM =  10
 
-  before_create do |doc|
-    doc.api_key = Store.generate_api_key
-    doc.api_rpm = DEFAULT_API_RPM if doc.api_rpm == 0
+  before_create do |store|
+    store.api_key = Store.generate_api_key
   end
 
   def self.generate_api_key

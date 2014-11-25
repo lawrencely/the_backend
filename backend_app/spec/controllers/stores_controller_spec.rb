@@ -58,7 +58,10 @@ RSpec.describe StoresController, :type => :controller do
     before do
       @store = Store.create!(
         name: 'test_store',
-        description: 'test_store_desciption'
+        description: 'test_store_desciption',
+        api_key: '',
+        api_secret: '',
+        user_id: @current_user.id
         )
       get :edit, { id: @store.id }
     end
@@ -77,8 +80,10 @@ RSpec.describe StoresController, :type => :controller do
       @store = Store.create!(
         name: 'test_store',
         description: 'test_store_desciption',
+        api_key: '',
+        api_secret: '',
         user_id: @current_user.id
-      )
+        )
       updated_store = {
         name: 'updated_store',
         description: 'updated_description'
@@ -105,9 +110,11 @@ RSpec.describe StoresController, :type => :controller do
     describe 'if user update does not pass validation method' do
       before do
         @store = Store.create!(
-        name: 'test_store',
-        description: 'test_store_desciption',
-        user_id: @current_user.id
+          name: 'test_store',
+          description: 'test_store_desciption',
+          api_key: '',
+          api_secret: '',
+          user_id: @current_user.id
         )
         updated_store = {
           name: '',

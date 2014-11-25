@@ -10,7 +10,6 @@
 #  description :string(255)
 #  api_key     :string(255)
 #  api_secret  :string(255)
-#  api_rpm     :integer          default(0)
 #
 
 FactoryGirl.define do

@@ -11,6 +11,8 @@ RSpec.describe CategoriesController, :type => :controller do
     @store = Store.create!(
       name: 'test_store',
       description: 'test_store_desciption',
+      api_key: '',
+      api_secret: '',
       user_id: @current_user.id
     )
   end
