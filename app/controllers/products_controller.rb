@@ -2,7 +2,6 @@ class ProductsController < ApplicationController
 #class Api::V1::ProductController < ApplicationController
 
 before_action :authenticate_api, :only => [:index, :show]
-after_action :access_control_headers
 
 # ajax request to get all products for index
 # $.ajax({
@@ -87,9 +86,4 @@ after_action :access_control_headers
       @store = Store.where(api_key: token).first
     end
   end
-
-  def set_access_control_headers
-   headers['Access-Control-Allow-Origin'] = "*"
-   headers['Access-Control-Request-Method'] = %w{GET POST OPTIONS}.join(",")
- end
 end
