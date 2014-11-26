@@ -1,11 +1,25 @@
 class CustomersController < ApplicationController
 
-  before_action :authenticate_api, :only => [:create, :update]
+  before_action :authenticate_api, :only => [:create, :update, :show]
+
 
   def index
     @customers = @store.customers
-    render json: @customers
   end
+
+################ show single customer ajax request
+# $.ajax({
+#    method: 'get',
+#    beforeSend: function(request)
+#    {
+#     request.setRequestHeader("Authorization"," Token token=7OGWgGjg5kNEoKyl33aHaQtt")
+#    },
+#    url: '/customers/7',
+#       success:function(data) {
+#          console.log(data);
+#       }
+#  });
+################
 
   def show
     @customer = @store.customers.find params[:id]

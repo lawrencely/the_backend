@@ -1,7 +1,20 @@
 class ProductsController < ApplicationController
 #class Api::V1::ProductController < ApplicationController
 
-  before_action :authenticate_api, :only => [:index, :show]
+before_action :authenticate_api, :only => [:index, :show]
+
+# ajax request to get all products for index
+# $.ajax({
+#    method: 'get',
+#    beforeSend: function(request)
+#    {
+#     request.setRequestHeader("Authorization"," Token token=7OGWgGjg5kNEoKyl33aHaQtt")
+#    },
+#    url: '/products',
+#       success:function(data) {
+#          console.log(data);
+#       }
+#  });
 
   def index
     render json: @store.products
@@ -34,6 +47,22 @@ class ProductsController < ApplicationController
       render :new
     end
   end
+
+############## single show ajax request
+
+# $.ajax({
+#    method: 'get',
+#    beforeSend: function(request)
+#    {
+#     request.setRequestHeader("Authorization"," Token token=7OGWgGjg5kNEoKyl33aHaQtt")
+#    },
+#    url: '/products/26',
+#       success:function(data) {
+#          console.log(data);
+#       }
+#  });
+
+ ##############
 
   def show
     @product = @store.products.find_by id: params[:id]
