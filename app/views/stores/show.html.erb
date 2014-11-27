@@ -1,41 +1,93 @@
 <div class="col-md-12 main">
           <h1 class="page-header">Dashboard</h1>
           <div class="row placeholders">
-          <h2 class="sub-header">Section title</h2>
-
+          <h2 class="sub-header">Customers</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
-                  <th>Header</th>
+                  <th>#Customer Id</th>
+                  <th>Name</th>
+                  <th>Email</th>
                 </tr>
               </thead>
+              <% @customers.each do | customer| %>
               <tbody>
                 <tr>
-                  <td>1,001</td>
-                  <td>Lorem</td>
-                  <td>ipsum</td>
-                  <td>dolor</td>
-                  <td>sit</td>
+                  <td><%= customer.id %></td>
+                  <td><%= customer.name %></td>
+                  <td><%= customer.email %></td>
                 </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <h2 class="sub-header">Categories</h2>
+            <table class="table table-striped">
+              <thead>
                 <tr>
-                  <td>1,002</td>
-                  <td>amet</td>
-                  <td>consectetur</td>
-                  <td>adipiscing</td>
-                  <td>elit</td>
+                  <th>#Category Id</th>
+                  <th>Category Name</th>
+                  <th>Product</th>
+                  <th>Description</th>
                 </tr>
+              </thead>
+              <% @categories.each do | category | %>
+              <tbody>
+                    <tr>
+                      <td><%= category.id %></td>
+                      <td><%= category.name %></td>
+                      <td><%= category.products[1].name %></td>
+                      <td><%= category.products[1].description %></td>
+                    </tr>
+                  <% end %>
+              </tbody>
+            </table>
+            <h2 class="sub-header">Products</h2>
+            <table class="table table-striped">
+              <thead>
                 <tr>
-                  <td>1,003</td>
-                  <td>Integer</td>
-                  <td>nec</td>
-                  <td>odio</td>
-                  <td>Praesent</td>
+                  <th>#Product Id</th>
+                  <th>Category</th>
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>Description</th>
                 </tr>
+              </thead>
+              <% @products.each do | product | %>
+              <tbody>
+                    <tr>
+                      <td><%= product.id %></td>
+                      <th><%= product.categories.first.name %></th>
+                      <td><%= product.name %></td>
+                      <td>$<%= product.price %></td>
+                      <td><%= product.description %></td>
+                    </tr>
+                  <% end %>
+              </tbody>
+            </table>
+          <h2 class="sub-header">Latest Orders</h2>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#Order Id</th>
+                  <th>#Customer Id</th>
+                  <th>Order Status</th>
+                  <th>Order Memo</th>
+                  <th>Country</th>
+                  <th>Time Stamp</th>
+                </tr>
+              </thead>
+              <% @orders.each do | order | %>
+              <tbody>
+                <tr>
+                  <td><%= order.id %></td>
+                  <td><%= order.customer_id %></td>
+                  <td><%= order.status %></td>
+                  <td><%= order.memo %></td>
+                  <td><%= order.country %></td>
+                  <td><%= order.created_at.strftime("%B %d, %Y")%></td>
+                </tr>
+                <% end %>
               </tbody>
             </table>
           </div>

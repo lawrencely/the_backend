@@ -19,6 +19,10 @@ class StoresController < ApplicationController
 
   def show
     @store = Store.find params[:id]
+    @customers = @store.customers.order('created_at DESC').limit 5
+    @categories = @store.categories.order('created_at DESC').limit 5
+    @orders = @store.orders.order('created_at DESC').limit 5
+    @products = @store.products.order('created_at DESC').limit 5
   end
 
   def edit
