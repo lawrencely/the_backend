@@ -30,7 +30,7 @@ module ApplicationHelper
               nav += "<span class='icon-bar'></span>"
               nav += "<span class='icon-bar'></span>"
             nav += "</button>"
-            nav += "<a class='navbar-brand' href='#''>The Backend</a>"
+            nav += "<a class='navbar-brand' href='#{root_path}''>The Backend</a>"
           nav += "</div>"
           nav += "<div id='navbar' class='navbar-collapse collapse' aria-expanded='false' style='height: 1px;'>"
             nav += "<ul class='nav navbar-nav navbar-right'>"
@@ -56,11 +56,8 @@ module ApplicationHelper
 
 
         nav += "<ul class='nav nav-sidebar col-md-2 sidebar'>"
-          nav += "<li class='active'>" + link_to('Home', root_path) + "</li> "
-          nav += "<li class='active'>" + link_to('Store', stores_path) + "</li> "
-          nav += "<li class='active'>" + link_to('My Categories', categories_path) + "</li>"
+          nav += "<li class='active'>" + link_to('Home', "stores/#{(@current_user.stores.first.id)}") + "</li> "
           nav += "<li class='active'>" + link_to('Create Category', new_category_path ) + "</li>"
-          nav += "<li class='active'>" + link_to('My Products', products_path ) + "</li>"
           nav += "<li class='active'>" + link_to('Add Products', new_product_path ) + "</li>"
           nav += "<li class='active'><a href='#''>Overview<span class='sr-only'>(current)</span></a></li>"
           nav += "<li class='active'><a href='#'>Reports</a></li>"

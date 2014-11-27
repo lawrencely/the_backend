@@ -27,8 +27,6 @@
                 <tr>
                   <th>#Category Id</th>
                   <th>Category Name</th>
-                  <th>Product</th>
-                  <th>Description</th>
                 </tr>
               </thead>
               <% @categories.each do | category | %>
@@ -36,8 +34,6 @@
                     <tr>
                       <td><%= category.id %></td>
                       <td><%= category.name %></td>
-                      <td><%= category.products[1].name %></td>
-                      <td><%= category.products[1].description %></td>
                     </tr>
                   <% end %>
               </tbody>
@@ -47,7 +43,6 @@
               <thead>
                 <tr>
                   <th>#Product Id</th>
-                  <th>Category</th>
                   <th>Product Name</th>
                   <th>Price</th>
                   <th>Description</th>
@@ -57,7 +52,6 @@
               <tbody>
                     <tr>
                       <td><%= product.id %></td>
-                      <th><%= product.categories.first.name %></th>
                       <td><%= product.name %></td>
                       <td>$<%= product.price %></td>
                       <td><%= product.description %></td>

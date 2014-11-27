@@ -1,23 +1,25 @@
-<%= form_for(:product) do |f| %>
+<div class="product-form-div">
+<%= form_for(:product, :url => {:controller => 'products', :action => 'create'}) do |f| %>
 
   <%= f.label :name %>
-  <%= f.text_field :name %>
-
+  <%= f.text_field :name, class: "form-control" %>
+<br>
   <%= f.label :description %>
-  <%= f.text_field :description %>
-
+  <%= f.text_field :description, class: "form-control" %>
+<br>
   <%= f.label :short_description %>
-  <%= f.text_field :short_description %>
-
+  <%= f.text_field :short_description, class: "form-control" %>
+<br>
   <%= f.label :product_attributes %>
-  <%= f.text_field :product_attributes %>
-
+  <%= f.text_field :product_attributes, class: "form-control" %>
+<br>
   <%= f.label :image %>
-  <%= f.url_field :image %>
-
+  <%= f.url_field :image, class: "form-control" %>
+<br>
   <%= f.label :price %>
-  <%= f.text_field :price %>
-
-  <%= f.submit  %>
+  <%= f.text_field :price, class: "form-control" %>
+<br>
+  <%= f.submit :Submit, class: "btn btn-primary"  %>
 
 <% end %>
+</div>

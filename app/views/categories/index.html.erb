@@ -1,0 +1,28 @@
+  <div class="col-md-12 main">
+    <h1 class="page-header">Dashboard</h1>
+      <div class="row placeholders">
+      <h2 class="sub-header">Categories</h2>
+        <div class="table-responsive">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+            <th>#Category Id</th>
+            <th>Category Name</th>
+            <th>Product</th>
+            <th>Description</th>
+            </tr>
+            </thead>
+            <% @categories.each do | category | %>
+            <tbody>
+            <tr>
+            <td><%= category.id %></td>
+            <td><%= category.name %></td>
+            <td><%= category.products[1].name %></td>
+            <td><%= category.products[1].description %></td>
+            </tr>
+            <% end %>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>

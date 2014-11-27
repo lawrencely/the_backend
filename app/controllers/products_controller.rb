@@ -28,7 +28,8 @@ before_action :authenticate_api, :only => [:index, :show]
     @product = Product.new product_params
     @store = @current_user.stores.first
     if @product.save
-      redirect_to root_path
+      @store.products << @product
+      redirect_to store_path(@store.id)
     else
       render :new
     end

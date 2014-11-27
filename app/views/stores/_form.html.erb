@@ -1,11 +1,11 @@
 <%= form_for(:store) do |f| %>
 
   <%= f.label :name %>
-  <%= f.text_field :name %>
+  <%= f.text_field :name, class: "form-control" %>
 
   <%= f.label :description %>
-  <%= f.text_field :description %>
+  <%= f.text_field :description, class: "form-control" %>
 
-  <%= f.submit  %>
+  <%= f.submit, class: "btn btn-primary"  %>
 
 <% end %>

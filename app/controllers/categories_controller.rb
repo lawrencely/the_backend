@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
     @store = @current_user.stores.first
     @category.store_id = @store.id
     if @category.save
-      redirect_to root_path
+      redirect_to store_path(@store.id)
     else
       render :new
     end
@@ -35,9 +35,14 @@ class CategoriesController < ApplicationController
     redirect_to root_path
   end
 
-  # def show
-  #   @category = Category.find params[:id]
-  # end
+  def show
+    @category = Category.find params[:id]
+  end
+
+  def index
+    @store = @current_user.stores.first
+    @categories = @store.categories
+  end
 
   private
 
