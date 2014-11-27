@@ -80,6 +80,7 @@ before_action :authenticate_api, :only => [:create, :index, :show]
     customer = Customer.find params[:customer_id]
     @order = customer.orders.create
     @order.customer = customer
+    @order.store = @store
     params[:products].each do |p|
       product = Product.find p[1][:product_id].to_i
       order_item = OrderItem.create(product_id: product.id, price: product.price, quantity: p[1][:quantity] )
