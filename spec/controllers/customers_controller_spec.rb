@@ -1,18 +1,38 @@
 require 'rails_helper'
 
 RSpec.describe CustomersController, :type => :controller do
-  # before do
-  #   @current_user = User.create!(
+
+#xhr :put, :update, :format => "js"
+
+
+  # describe 'Index' do
+  #   before do
+  #     @current_user = User.create!(
+  #       name: 'test',
+  #       email: 'test@test.com',
+  #       password: 'testtest',
+  #       password_confirmation: 'testtest'
+  #     )
+  #     @store = Store.create!(
+  #       name: 'test_store',
+  #       description: 'test_store_desciption',
+  #       api_key: '',
+  #       api_secret: '',
+  #       user_id: @current_user.id
+  #       )
+  #     @customer = Customer.create!(
   #     name: 'test',
   #     email: 'test@test.com',
-  #     password: 'testtest',
-  #     password_confirmation: 'testtest'
-  #   )
-  #   @store = Store.create!(
-  #     name: 'test_store',
-  #     description: 'test_store_desciption',
-  #     user_id: @current_user.id
-  #   )
+  #     password: 'testtest'
+  #       )
+  #     @store.customers << @customer
+  #     get :index, nil, { user_id: @current_user.id}
+  #   end
+  #   it 'should assign customers variable' do
+  #     expect(assigns(:customers)).to eq(@store.customers)
+  #   end
+  # end
+
   #   @category = Category.create!(
   #     name: 'test_category',
   #     description: 'test_category_desciption',

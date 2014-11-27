@@ -3,9 +3,9 @@ class CustomersController < ApplicationController
   before_action :authenticate_api, :only => [:create, :update, :show]
 
 
-  def index
-    @customers = @store.customers
-  end
+  # def index
+  #   @customers = @store.customers
+  # end
 
 ################ show single customer ajax request
 # $.ajax({

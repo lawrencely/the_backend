@@ -141,6 +141,43 @@ RSpec.describe CategoriesController, :type => :controller do
     end
   end
 
+  describe 'SHOW GET' do
+    before do
+      @category = Category.create!(
+        name: 'test_category',
+        description: 'test_category_desciption',
+        store_id: @store.id
+      )
+      get :show, {id: @category.id }, {user_id: @current_user.id}
+    end
+
+    it 'should get a show page for single product' do
+      expect(response).to render_template('show')
+    end
+
+    it 'should assign params category id into @category variable' do
+
+      expect(assigns(:category)).to eq(@category)
+    end
+  end
+
+  describe 'INDEX get' do
+    before do
+      @category = Category.create!(
+        name: 'test_category',
+        description: 'test_category_desciption',
+        store_id: @store.id
+      )
+      get :index, { id: @category.id }, {user_id: @current_user.id }
+    end
+    it 'should render index page' do
+      expect(response).to render_template('index')
+    end
+    it 'should set @store variable' do
+      expect(@current_user.stores.first).to eq(assigns(:store))
+    end
+  end
+
   describe 'DESTROY delete' do
     before do
       @category = Category.create!(

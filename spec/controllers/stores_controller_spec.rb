@@ -54,6 +54,22 @@ RSpec.describe StoresController, :type => :controller do
     end
   end
 
+  describe 'SHOW' do
+    before do
+      @store = Store.create!(
+        name: 'test_store',
+        description: 'test_store_desciption',
+        api_key: '',
+        api_secret: '',
+        user_id: @current_user.id
+        )
+      get :show, {id: @store.id}, {user_id: @current_user}
+    end
+    it 'should assign store variable' do
+      expect(assigns(:store)).to eq(@store)
+    end
+  end
+
   describe 'GET edit page for store' do
     before do
       @store = Store.create!(

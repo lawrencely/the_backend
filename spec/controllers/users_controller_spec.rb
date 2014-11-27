@@ -109,4 +109,19 @@ RSpec.describe UsersController, :type => :controller do
     end
   end
 
+  describe 'SHOW ' do
+    before do
+        @user = User.create!(
+          name: "test",
+          email: "test@test.com",
+          password:'testtest',
+          password_confirmation: 'testtest'
+        )
+      get :show, { :id => @user.id }, { user_id: @user.id }
+    end
+    it 'should assign @user variable' do
+      expect(@user).to eq(assigns(:current_user))
+    end
+  end
+
 end

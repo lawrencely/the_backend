@@ -182,4 +182,23 @@ RSpec.describe ProductsController, :type => :controller do
       expect(Product.count).to eq(0)
     end
   end
+
+  describe 'SHOW' do
+    before do
+      @product = Product.create!(
+        name: 'test_product',
+        description: 'test_description',
+        short_description: 'test_short_description',
+        price: 'test_price',
+        product_attributes: 'test_product_attributes',
+        store_id: @store.id,
+        image: 'test_image'
+      )
+
+      get :show, {id: @product.id}, { authorization: @store.api_key}
+    end
+    it 'should assign product to variable' do
+      expect(@product.id).to eq(@store.products.find(@product).id)
+    end
+  end
 end
