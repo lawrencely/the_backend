@@ -1,11 +1,13 @@
-<%= form_for(:store) do |f| %>
+<div class="store-form-div">
+<%= form_for(:store, :url => {:controller => 'stores', :action => 'create'}) do |f| %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
-
+<br>
   <%= f.label :description %>
   <%= f.text_field :description, class: "form-control" %>
-
-  <%= f.submit, class: "btn btn-primary"  %>
+<br>
+  <%= f.submit :Create, class: "btn btn-primary"  %>
 
 <% end %>
+</div>

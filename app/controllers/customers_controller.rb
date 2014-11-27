@@ -32,6 +32,7 @@ class CustomersController < ApplicationController
     @customer.email = params[:email]
     @customer.password = params[:password]
     if @customer.save
+      @store.customers << @customer
       render json: @customer
     else
       render json: { error: @customer.errors }
