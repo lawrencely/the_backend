@@ -23,7 +23,10 @@ class StoresController < ApplicationController
     @customers = @store.customers.order('created_at DESC').limit 5
     @categories = @store.categories.order('created_at DESC').limit 5
     @orders = @store.orders.order('created_at DESC').limit 5
+    @allorders = @store.orders
     @products = @store.products.order('created_at DESC').limit 5
+    @customers_all = @store.customers
+    @products_all = @store.products
   end
 
   def edit

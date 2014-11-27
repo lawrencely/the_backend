@@ -1627,6 +1627,7 @@
       ],
       "/Users/lawrencely/Project3/app/controllers/stores_controller.rb": [
         1,
+        1,
         null,
         1,
         null,
@@ -1646,6 +1647,9 @@
         null,
         null,
         1,
+        0,
+        0,
+        0,
         0,
         0,
         0,
@@ -2363,6 +2367,6 @@
         null
       ]
     },
-    "timestamp": 1417069624
+    "timestamp": 1417090205
   }
 }

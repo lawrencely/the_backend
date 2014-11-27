@@ -1,7 +1,3 @@
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
-
 
 
 
@@ -12,6 +8,8 @@
           <h1 class="page-header">Dashboard</h1>
           <div class="row placeholders">
           <h2 class="sub-header">Customers</h2>
+          <%= content_tag :div, "", id: "customers_chart", data: {customers: @customers_all} %>
+
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -49,6 +47,8 @@
               </tbody>
             </table>
             <h2 class="sub-header">Products</h2>
+            <%= content_tag :div, "", id: "products_chart", data: { products: @products_all} %>
+
             <table class="table table-striped">
               <thead>
                 <tr>
@@ -70,6 +70,8 @@
               </tbody>
             </table>
           <h2 class="sub-header">Latest Orders</h2>
+<%= content_tag :div, "", id: "orders_chart", data: {orders: @allorders} %>
+
             <table class="table table-striped">
               <thead>
                 <tr>
