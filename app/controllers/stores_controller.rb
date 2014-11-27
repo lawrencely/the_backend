@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+    respond_to :js
 
   def index
   end

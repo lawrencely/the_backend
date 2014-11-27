@@ -1,14 +1,14 @@
-$(document).ready(function () {
+// $(document).ready(function () {
 
-  var $chart = $('#chart');
+//   var $chart = $('#chart');
 
-  if ($chart.length === 0) {
-    return; // Chart isn't on this page.
-  }
+//   if ($chart.length === 0) {
+//     return; // Chart isn't on this page.
+//   }
 
-  // Got here, this must be the chart page.
+//   // Got here, this must be the chart page.
 
-  // MORRIS stuff here::
-  console.log(currentUser);
+//   // MORRIS stuff here::
+//   console.log(currentUser);
 
-});
+// });

@@ -52,7 +52,7 @@ RSpec.describe CategoriesController, :type => :controller do
     end
 
     it 'should redirect to root path' do
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(store_path(@current_user.stores.first.id))
     end
   end
   describe 'invalid category' do

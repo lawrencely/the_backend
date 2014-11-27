@@ -56,7 +56,6 @@ module ApplicationHelper
 
 
         nav += "<ul class='nav nav-sidebar col-md-2 sidebar'>"
-          nav += "<li class='active'>" + link_to('Home', "stores/#{(@current_user.stores.first.id)}") + "</li> "
           nav += "<li class='active'>" + link_to('Create Category', new_category_path ) + "</li>"
           nav += "<li class='active'>" + link_to('Add Products', new_product_path ) + "</li>"
           nav += "<li class='active'><a href='#''>Overview<span class='sr-only'>(current)</span></a></li>"
