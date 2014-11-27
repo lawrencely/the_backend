@@ -85,6 +85,7 @@ before_action :authenticate_api, :only => [:create, :index, :show]
       order_item = OrderItem.create(product_id: product.id, price: product.price, quantity: p[1][:quantity] )
       @order.order_items << order_item
     end
+    @order.save
     render json: @order
   end
 
