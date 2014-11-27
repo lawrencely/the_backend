@@ -32,24 +32,24 @@ before_action :authenticate_api, :only => [:create, :index, :show]
 # tested ajax request
 
 # $.ajax({
-#   method: 'post',
+#   method: 'POST',
 #   beforeSend: function(request)
 #   {
-#     request.setRequestHeader("Authorization"," Token token=7OGWgGjg5kNEoKyl33aHaQtt")
+#     request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt")
 #   },
-#   url: '/orders',
+#   url: 'http://pacific-spire-8238.herokuapp.com/orders',
 #   data: {
 #   customer_id: 7,
 #   products:
 #     [
-#       { product_id: 26,
+#       { product_id: 5,
 #         price: '21',
 #         quantity: '2' },
-#       { product_id: 27,
+#       { product_id: 6,
 #         price: '200',
 #         quantity: '1'}
 #     ]
-#   }
+#   },
 #   success:function(data) {
 #   console.log(data);
 #   }
