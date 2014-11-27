@@ -1,1 +1,5 @@
-Hi and welcome
+<% @current_user.stores.each do |store| %>
+  <h1><%= link_to(store.name, store_path(store.id)) %></h1>
+  <br>
+  <h1><%= store.description %></h1>
+<% end %>
