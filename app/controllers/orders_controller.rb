@@ -87,7 +87,7 @@ before_action :authenticate_api, :only => [:create, :index, :show]
       @order.order_items << order_item
     end
     @order.save
-    render json: @order
+    render json: @order.order_items
   end
 
 

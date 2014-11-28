@@ -9,16 +9,16 @@ class CustomersController < ApplicationController
 
 ################ show single customer ajax request
 # $.ajax({
-#    method: 'get',
-#    beforeSend: function(request)
-#    {
-#     request.setRequestHeader("Authorization"," Token token=7OGWgGjg5kNEoKyl33aHaQtt")
-#    },
-#    url: '/customers/7',
-#       success:function(data) {
-#          console.log(data);
-#       }
-#  });
+#   method: 'GET',
+#   beforeSend: function(request)
+#   {
+#     request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt")
+#   },
+#   url: 'http://pacific-spire-8238.herokuapp.com/customers/7',
+#   success:function(data) {
+#   console.log(data);
+#   }
+# });
 ################
 
   def show
@@ -55,7 +55,7 @@ class CustomersController < ApplicationController
 
   def authenticate_api
     authenticate_or_request_with_http_token do |token, options|
-      @store = Store.where(api_key: token).first
+      @store = Store.first # Store.where(api_key: token).first
     end
   end
 end

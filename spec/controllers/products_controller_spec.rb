@@ -194,11 +194,34 @@ RSpec.describe ProductsController, :type => :controller do
         store_id: @store.id,
         image: 'test_image'
       )
-
-      get :show, {id: @product.id}, { authorization: @store.api_key}
+    request.env['HTTP_AUTHORIZATION'] = "Token token=#{@store.api_key}"
+    get :show, { id: @product.id }, { 'Authorization' => "Token token=#{@store.api_key}" }
     end
-    it 'should assign product to variable' do
-      expect(@product.id).to eq(@store.products.find(@product).id)
+    it 'should render json for the correct customer' do
+      parsed_response = JSON.parse(response.body)
+      expect(parsed_response['id']).to eql @product.id
     end
   end
+
+  describe "index " do
+    before do
+      @product_index = Product.create!(
+        name: 'test_product',
+        description: 'test_description',
+        short_description: 'test_short_description',
+        price: 'test_price',
+        product_attributes: 'test_product_attributes',
+        store_id: @store.id,
+        image: 'test_image'
+      )
+
+      request.env['HTTP_AUTHORIZATION'] = "Token token=#{@store.api_key}"
+      get :index, nil, { 'Authorization' => "Token token=#{@store.api_key}" }
+    end
+    it 'should render all products' do
+      parsed_response = JSON.parse(response.body)
+      expect(parsed_response.count).to eql 1
+    end
+  end
+
 end
