@@ -2,6 +2,7 @@
   <% if @current_user.present? %>
     <% @current_user.stores.each do |store| %>
       <h1 class="store-index-text"><%= link_to(store.name, store_path(store.id)) %></h1>
+      <h2>Store API Key: <%= store.api_key %></h2>
       <br>
       <h2 class="store-index-text"><%= store.description %></h2>
     <% end %>
