@@ -1,4 +1,4 @@
-<%= form_for(:user) do |f| %>
+<%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
 <div class="container-fluid">
 
   <%= f.label :name %>
