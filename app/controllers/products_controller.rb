@@ -5,12 +5,12 @@ before_action :authenticate_api, :only => [:index, :show]
 
 # ajax request to get all products for index
 # $.ajax({
-#    method: 'get',
+#    method: 'GET',
 #    beforeSend: function(request)
 #    {
-#     request.setRequestHeader("Authorization"," Token token=7OGWgGjg5kNEoKyl33aHaQtt")
+#     request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt")
 #    },
-#    url: '/products',
+#    url: 'http://thebackend.herokuapp.com/products',
 #       success:function(data) {
 #          console.log(data);
 #       }
@@ -52,12 +52,12 @@ before_action :authenticate_api, :only => [:index, :show]
 ############## single show ajax request
 
 # $.ajax({
-#    method: 'get',
+#    method: 'GET',
 #    beforeSend: function(request)
 #    {
-#     request.setRequestHeader("Authorization"," Token token=7OGWgGjg5kNEoKyl33aHaQtt")
+#     request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt")
 #    },
-#    url: '/products/26',
+#    url: 'http://thebackend.herokuapp.com/products/16',
 #       success:function(data) {
 #          console.log(data);
 #       }

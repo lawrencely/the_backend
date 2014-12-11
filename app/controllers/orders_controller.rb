@@ -10,12 +10,12 @@ before_action :authenticate_api, :only => [:create, :index, :show]
 ############### show ajax request for orders
 
 # $.ajax({
-#    method: 'get',
+#    method: 'GET',
 #    beforeSend: function(request)
 #    {
-#     request.setRequestHeader("Authorization"," Token token=7OGWgGjg5kNEoKyl33aHaQtt")
+#     request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt")
 #    },
-#    url: '/orders/21',
+#    url: 'http://thebackend.herokuapp.com/orders',
 #       success:function(data) {
 #          console.log(data);
 #       }
@@ -37,7 +37,7 @@ before_action :authenticate_api, :only => [:create, :index, :show]
 #   {
 #     request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt")
 #   },
-#   url: 'http://pacific-spire-8238.herokuapp.com/orders',
+#   url: 'http://thebackend.herokuapp.com/orders',
 #   data: {
 #   customer_id: 7,
 #   products:
