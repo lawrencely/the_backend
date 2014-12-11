@@ -30,9 +30,8 @@ module ApplicationHelper
           nav += "<li class='active'><a href='#'>Reports</a></li>"
           nav += "<li class='active'><a href='#'>Analytics</a></li>"
           nav += "<li class='active'><a href='#'>Export</a></li>"
-          nav += "<li class='active'><a href='#'>Nav item again</a></li>"
-          nav += "<li class='active'><a href='#'>One more nav</a></li>"
-          nav += "<li class='active'><a href='#'>Another nav item</a></li>"
+          nav += "<li class='active'><a href='#'>Sales</a></li>"
+          nav += "<li class='active'><a href='#'>Group Email</a></li>"
         nav += "</ul>"
     else
       nav += "<div class='container-fluid'>"
