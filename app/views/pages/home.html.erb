@@ -12,9 +12,117 @@
        <h1>Welcome</h1>
        <p>The Backend is built as a customizable API. It collects and saves all your data into this backend app and gives you access to monitor and manage your online e-commerce store. It is a one stop solution for the back end and sends your data to any front-end site with an AJAX request through your own API key.</p>
        <br>
-       <p>It is currently a working MVP and is still a work in progess.</p>
+       <p>It is currently a working MVP but still improvements being made.</p>
+       <br>
+       <p>To Demo feel free to sign in with</p>
+       <p><strong>Username:</strong> lebron james</p>
+       <p><strong>Password:</strong> lebronjames</p>
+       <h3>Using the API</h3>
+          <div class="bs-example" data-example-id="striped-table">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Task</th>
+          <th>Ajax Request</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Show single customer</td>
+          <td>
+            $.ajax({<br>
+              method: 'GET',<br>
+              beforeSend: function(request) {<br>
+              request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt")   }, <br>
+              url: 'http://thebackend.herokuapp.com/customers/7', <br>
+              success:function(data) { <br>
+              console.log(data);<br>
+            } });<br>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Show All Orders</td>
+          <td>
+            $.ajax({ <br>
+              method: 'GET', <br>
+              beforeSend: function(request) { <br>
+               request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt") }, <br>
+              url: 'http://thebackend.herokuapp.com/orders',
+                 success:function(data) { <br>
+                    console.log(data); <br>
+                 } }); <br>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Posting an Order</td>
+          <td>
+             $.ajax({ <br>
+               method: 'POST', <br>
+               beforeSend: function(request) <br>
+               { <br>
+                 request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt") <br>
+               }, <br>
+               url: 'http://thebackend.herokuapp.com/orders', <br>
+               data: { <br>
+               customer_id: 7, <br>
+               products: <br>
+                 [ <br>
+                   { product_id: 5, <br>
+                     price: '21', <br>
+                     quantity: '2' }, <br>
+                   { product_id: 6, <br>
+                     price: '200', <br>
+                     quantity: '1'} <br>
+                 ] <br>
+               }, <br>
+               success:function(data) { <br>
+               console.log(data); <br>
+               } <br>
+             }); <br>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>Show All Products</td>
+          <td>
+           $.ajax({ <br>
+              method: 'GET', <br>
+              beforeSend: function(request) <br>
+              { <br>
+               request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt") <br>
+              }, <br>
+              url: 'http://thebackend.herokuapp.com/products', <br>
+                 success:function(data) { <br>
+                    console.log(data); <br>
+                 } <br>
+            }); <br>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>Show Single Products</td>
+          <td>
+           $.ajax({ <br>
+              method: 'GET', <br>
+              beforeSend: function(request) <br>
+              { <br>
+               request.setRequestHeader("Authorization"," Token token=NPHurTV9GxentCa5Z11Z7wtt") <br>
+              }, <br>
+              url: 'http://thebackend.herokuapp.com/products/16', <br>
+                 success:function(data) { <br>
+                    console.log(data); <br>
+                 } <br>
+            }); <br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
     </div>
-
   </div>
 
   <% end %>
